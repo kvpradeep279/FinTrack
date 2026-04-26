@@ -41,7 +41,7 @@ export default function ExpenseForm({ onSuccess }: Props) {
     }
 
     mutate(
-      { amount, category, description, date },
+      { amount, category: category as Category, description, date },
       {
         onSuccess: () => {
           setAmount("");
