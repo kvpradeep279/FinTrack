@@ -38,7 +38,7 @@ async function request<T>(
         if (Array.isArray(body.detail)) {
           // Pydantic 422 validation errors are arrays of objects
           detail = body.detail
-            .map((e: any) => e.msg.replace(/^Value error, /, ""))
+            .map((e: { msg: string }) => e.msg.replace(/^Value error, /, ""))
             .join(" — ");
         } else {
           // Standard FastAPI string detail
