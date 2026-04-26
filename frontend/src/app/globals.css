@@ -189,7 +189,8 @@ body {
   color: var(--color-text-muted);
 }
 
-.field__select:invalid {
+.field__select:invalid,
+.field__input[type="date"]:invalid {
   color: var(--color-text-muted);
 }
 

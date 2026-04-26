@@ -17,7 +17,6 @@ export default function ExpenseForm({ onSuccess }: Props) {
   const [category, setCategory] = useState<Category | "">("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  const [dateFocused, setDateFocused] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -96,7 +95,7 @@ export default function ExpenseForm({ onSuccess }: Props) {
           required
           disabled={isPending}
         >
-          <option value="" disabled hidden>Select a category</option>
+          <option value="" disabled hidden>SELECT A CATEGORY</option>
           {CATEGORIES.map((c) => (
             <option key={c} value={c}>{c}</option>
           ))}
@@ -109,7 +108,7 @@ export default function ExpenseForm({ onSuccess }: Props) {
           id="description"
           className="field__input"
           type="text"
-          placeholder="e.g. Lunch at Subway"
+          placeholder="E.G. LUNCH AT SUBWAY"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           maxLength={500}
@@ -123,12 +122,9 @@ export default function ExpenseForm({ onSuccess }: Props) {
         <input
           id="date"
           className="field__input"
-          type={(dateFocused || date) ? "date" : "text"}
-          placeholder="DD/MM/YYYY"
+          type="date"
           value={date}
           max={today}
-          onFocus={() => setDateFocused(true)}
-          onBlur={() => setDateFocused(false)}
           onChange={(e) => setDate(e.target.value)}
           required
           disabled={isPending}
