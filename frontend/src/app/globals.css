@@ -185,6 +185,18 @@ body {
   cursor: not-allowed;
 }
 
+.field__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.field__select:invalid {
+  color: var(--color-text-muted);
+}
+
+.field__select option {
+  color: var(--color-text-primary);
+}
+
 .field__select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 32px; }
 
 /* ── Buttons ───────────────────────────────────────── */
@@ -381,6 +393,7 @@ body {
   gap: var(--space-5);
   width: 100%;
   overflow-x: auto;
+  padding-top: 6px;
   padding-bottom: var(--space-4); /* Space for scrollbar */
   -webkit-overflow-scrolling: touch;
 }
@@ -394,13 +407,22 @@ body {
   min-width: 75px;
 }
 
-.mini-ring-chart {
+.mini-ring-chart-wrapper {
+  position: relative;
   width: 52px;
   height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-ring-chart {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   border-radius: 50%;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-  mask-image: radial-gradient(transparent 60%, black 61%);
-  -webkit-mask-image: radial-gradient(transparent 60%, black 61%);
+  mask-image: radial-gradient(transparent 58%, black 59%);
+  -webkit-mask-image: radial-gradient(transparent 58%, black 59%);
   transition: transform var(--transition);
 }
 
@@ -417,9 +439,23 @@ body {
   margin-top: 4px;
 }
 
-.mini-ring-pct {
-  font-size: 11px;
+.mini-ring-center-text {
+  display: flex;
+  align-items: baseline;
+  z-index: 1;
+  line-height: 1;
+}
+
+.mini-ring-val {
+  font-size: 16px;
   font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.mini-ring-sym {
+  font-size: 11px;
+  font-weight: 700;
+  margin-left: 1px;
 }
 
 /* ── Empty State ───────────────────────────────────── */

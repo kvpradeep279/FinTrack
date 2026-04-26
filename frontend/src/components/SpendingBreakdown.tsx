@@ -70,14 +70,17 @@ export default function SpendingBreakdown({ expenses }: Props) {
           const gradient = `conic-gradient(${s.color} 0% ${s.percentage}%, var(--color-border) ${s.percentage}% 100%)`;
           return (
             <div key={s.category} className="mini-ring-item" title={`${s.count} expense(s) — ${formatCurrency(s.total)}`}>
-              <div 
-                className="mini-ring-chart" 
-                style={{ background: gradient }}
-              />
+              <div className="mini-ring-chart-wrapper">
+                <div 
+                  className="mini-ring-chart" 
+                  style={{ background: gradient }}
+                />
+                <span className="mini-ring-center-text" style={{ color: s.color }}>
+                  <span className="mini-ring-val">{s.percentage.toFixed(0)}</span>
+                  <span className="mini-ring-sym">%</span>
+                </span>
+              </div>
               <span className="mini-ring-name">{s.category}</span>
-              <span className="mini-ring-pct" style={{ color: s.color }}>
-                {s.percentage.toFixed(1)}%
-              </span>
             </div>
           );
         })}
